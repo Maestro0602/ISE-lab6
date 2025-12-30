@@ -5,7 +5,7 @@
  * @author Song Phengroth
  * @version 1.0
  */
-public class Subjects {
+public class Subject {
     
     // Example 1: Constants
     public static final double GST_RATE = 0.05;
@@ -18,18 +18,18 @@ public class Subjects {
     }
     
     // Instance variables
-    private String subjectcode;
-    private String subjectname;
-    private int credithours;
+    private String subjectCode;
+    private String subjectName;
+    private int creditHours;
     private String instructor;
     
     /**
      * Default constructor.
      */
-    public Subjects() {
-        this.subjectcode = "";
-        this.subjectname = "";
-        this.credithours = 0;
+    public Subject() {
+        this.subjectCode = "";
+        this.subjectName = "";
+        this.creditHours = 0;
         this.instructor = "";
     }
     
@@ -41,25 +41,25 @@ public class Subjects {
      * @param creditHours the number of credit hours
      * @param instructor the instructor's name
      */
-    public Subjects(String subjectcode, String subjectname, int credithours, String instructor) {
-        this.subjectcode = subjectcode;
-        this.subjectname = subjectname;
-        this.credithours = credithours;
+    public Subject(String subjectCode, String subjectName, int creditHours, String instructor) {
+        this.subjectCode = subjectCode;
+        this.subjectName = subjectName;
+        this.creditHours = creditHours;
         this.instructor = instructor; // should all be uppercase like Code or Name or Hours
     }
     
     // Getters and Setters
     
     public String getSubjectCode() {
-        return subjectcode;
+        return subjectCode;
     }
     
-    public void setSubjectCode(String subjectcode) {
-        this.subjectcode = subjectcode;
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
     
     public String getSubjectName() {
-        return subjectname;
+        return subjectName;
     }
     
     /**
@@ -72,15 +72,15 @@ public class Subjects {
         if (subjectName == null || subjectName.trim().isEmpty()) {
             throw new IllegalArgumentException("Subject name cannot be null or empty");
         }
-        this.subjectname = subjectname; // has no effect
+        this.subjectName = subjectName; // has no effect
     }
     
     public int getCreditHours() {
-        return credithours;
+        return creditHours;
     }
     
     public void setCreditHours(int creditHours) {
-        this.credithours = credithours;
+        this.creditHours = creditHours;
     }
     
     public String getInstructor() {
@@ -98,15 +98,16 @@ public class Subjects {
     @Override
     public String toString() {
         return String.format("Subject Code: %s\nSubject Name: %s\nCredit Hours: %d\nInstructor: %s\nTuition Fee: $%.2f",
-                subjectcode, subjectname, credithours, instructor, tuitionFee);
+                subjectCode, subjectName, creditHours, instructor, tuitionFee);
     }
     
     public static void main(String[] args) {
         System.out.println("GST Rate: " + GST_RATE);
-        System.out.println("Tuition Fee: $" + Subjects.getTuitionFee());
+        System.out.println("Tuition Fee: $" + Subject.getTuitionFee());
         
-        Subjects subject1 = new Subjects("CS201", "Data Structures", 3, "Dr. Smith");
+        Subject subject1 = new Subject("CS201", "Data Structures", 3, "Dr. Smith");
         System.out.println("\n" + subject1);
         System.out.println("Total Fee with GST: $" + subject1.calculateTotalFee());
     }
+
 }
