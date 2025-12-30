@@ -28,7 +28,7 @@ public class Session {
 
     // ===================== METHODS =====================
     public void setDuration(int startTime, int endTime) {
-        // BUG: Allows negative times, which may not make sense
+        // setDuration() allows negative times, which may not make sense for a session.
         if (startTime >= endTime) {
             throw new IllegalArgumentException(
                 "Start time must be less than end time."
