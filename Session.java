@@ -1,16 +1,23 @@
 package ise;
-
+/**
+ * ------------------------------------------------------------
+ * Class Name   : Session
+ * Author       : Theng vanheng
+ * Created Date : 2025-12-30
+ * Description  : Represents a Year 2 class session.
+ *                Demonstrates coding standards, constants,
+ *                naming conventions, and exception handling.
+ * ------------------------------------------------------------
+ */
 public class Session {
 
     // ===================== ATTRIBUTES =====================
     private int startTime;
     private int endTime;
-    private String sessionName; // NEW ATTRIBUTE, but not initialized
 
     // ===================== CONSTRUCTOR =====================
     public Session(int startTime, int endTime) {
         setDuration(startTime, endTime);
-        // BUG: forgot to initialize sessionName, could cause NullPointerException later
     }
 
     // ===================== GETTERS =====================
@@ -22,13 +29,14 @@ public class Session {
         return endTime;
     }
 
-    public String getSessionName() {
-        return sessionName.toUpperCase(); // BUG: sessionName may be null
-    }
-
     // ===================== METHODS =====================
+    /**
+     * Sets session duration.
+     * @param startTime start hour (integer)
+     * @param endTime end hour (integer)
+     * @throws IllegalArgumentException if startTime >= endTime
+     */
     public void setDuration(int startTime, int endTime) {
-        // setDuration() allows negative times, which may not make sense for a session.
         if (startTime >= endTime) {
             throw new IllegalArgumentException(
                 "Start time must be less than end time."
@@ -38,11 +46,6 @@ public class Session {
         this.endTime = endTime;
     }
 
-    // BUG: Unused method
-    public void printSessionInfo() {
-        System.out.println("Session: " + sessionName + " | " + startTime + "-" + endTime);
-    }
-
     // ===================== MAIN METHOD (TESTING) =====================
     public static void main(String[] args) {
         try {
@@ -50,12 +53,9 @@ public class Session {
 
             System.out.println("Session Start Time : " + session.getStartTime());
             System.out.println("Session End Time   : " + session.getEndTime());
-            
-            // BUG: Uncommenting this will cause exception, but message is unclear
-            // session.setDuration(14, 12);
 
-            // BUG: Calling getSessionName will throw NullPointerException
-            System.out.println("Session Name: " + session.getSessionName());
+            // Uncomment to test exception
+            // session.setDuration(14, 12);
 
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
