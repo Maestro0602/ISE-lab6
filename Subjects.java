@@ -45,7 +45,7 @@ public class Subjects {
         this.subjectcode = subjectcode;
         this.subjectname = subjectname;
         this.credithours = credithours;
-        this.instructor = instructor;
+        this.instructor = instructor; // should all be uppercase like Code or Name or Hours
     }
     
     // Getters and Setters
@@ -72,7 +72,7 @@ public class Subjects {
         if (subjectName == null || subjectName.trim().isEmpty()) {
             throw new IllegalArgumentException("Subject name cannot be null or empty");
         }
-        this.subjectname = subjectname;
+        this.subjectname = subjectname; // has no effect
     }
     
     public int getCreditHours() {
